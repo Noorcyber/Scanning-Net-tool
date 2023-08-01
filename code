@@ -3,9 +3,13 @@
 # Function to animate the text in Matrix movie style
 animate_matrix_style() {
     text="Netrunners"
-    for (( i=0; i<${#text}; i++ )); do
-        echo -ne "${text:$i:1}"
+    len=${#text}
+    i=0
+
+    while [ $i -lt $len ]; do
+        printf "\e[32m${text:$i:1}\e[0m"
         sleep 0.1
+        ((i++))
     done
     echo ""
 }
