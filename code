@@ -12,55 +12,41 @@ echo -e "\e[1;34m
 
 \e[0m"
 
-# Rest of the script...
 # Function to scan ports
 scan_ports() {
-    target_ip="$1"
-    echo "Scanning ports for IP: $target_ip"
-    # Your port scanning logic here (using nmap, for example)
+    echo "Scanning ports..."
+    # Add your port scanning logic here
+    echo "Port scanning completed."
 }
 
 # Function to ping 8.8.8.8
-ping_google() {
-    echo "Pinging 8.8.8.8"
+ping_8_8_8_8() {
+    echo "Pinging 8.8.8.8..."
     ping -c 4 8.8.8.8
 }
 
 # Function for MTR test
-mtr_test() {
-    target_ip="$1"
-    echo "Running MTR test to IP: $target_ip"
-    # Your MTR test logic here (using mtr, for example)
+run_mtr_test() {
+    echo "Running MTR test..."
+    # Add your MTR test logic here
+    echo "MTR test completed."
 }
 
-# Main menu
-echo "Please select an option:"
-echo "1. Scan Ports"
-echo "2. Ping 8.8.8.8"
-echo "3. MTR Test"
-echo "4. Exit"
+# Main menu loop
+while true; do
+    echo -e "\nPlease select an option:
+1. Scan Ports
+2. Ping 8.8.8.8
+3. MTR Test
+4. Exit"
 
-read -r option
+    read -r choice
 
-case "$option" in
-    1)
-        echo "Enter the IP address to scan ports:"
-        read -r target_ip
-        scan_ports "$target_ip"
-        ;;
-    2)
-        ping_google
-        ;;
-    3)
-        echo "Enter the IP address for MTR test:"
-        read -r target_ip
-        mtr_test "$target_ip"
-        ;;
-    4)
-        echo "Exiting..."
-        exit 0
-        ;;
-    *)
-        echo "Invalid option. Please select a valid option."
-        ;;
-esac
+    case "$choice" in
+        1) scan_ports ;;
+        2) ping_8_8_8_8 ;;
+        3) run_mtr_test ;;
+        4) exit ;;
+        *) echo "Invalid option. Please select a valid option." ;;
+    esac
+done
