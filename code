@@ -2,12 +2,14 @@
 
 # ASCII art for Netrunners
 echo "
-███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗████████╗
-████╗ ████║██╔═══██╗██╔══██╗██║   ██║╚══██╔══╝
-██╔████╔██║██║   ██║██║  ██║██║   ██║   ██║   
-██║╚██╔╝██║██║   ██║██║  ██║██║   ██║   ██║   
-██║ ╚═╝ ██║╚██████╔╝██████╔╝╚██████╔╝   ██║   
-╚═╝     ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝    ╚═╝   
+ _   _      _             __        __         _     _             _        
+| \ | |    | |            \ \      / /        (_)   | |           | |       
+|  \| | ___| |_   ___ _ __ \ \ /\ / /__  __ _ _ ___| |_   _  __ _| | _____ 
+| . ` |/ _ \ | | | | | '_ \ \ V  V / _ \/ _` | / __| | | | |/ _` | |/ / _ \\
+| |\  |  __/ | |_| | | | | | \  /\  /  __/ (_| | \__ \ | |_| | (_| |   <  __/
+|_| \_|\___|_|\__,_|_|_| |_|  \/  \/ \___|\__, |_|___/_|\__,_|\__,_|_|\_\___|
+                                          __/ |                           
+                                         |___/                            
 "
 
 # Function to scan ports
@@ -30,19 +32,12 @@ mtr_test() {
     # Your MTR test logic here (using mtr, for example)
 }
 
-# Function to display network packets using tshark
-display_packets() {
-    echo "Displaying network packets using tshark"
-    # Your tshark command here
-}
-
 # Main menu
 echo "Please select an option:"
 echo "1. Scan Ports"
 echo "2. Ping 8.8.8.8"
 echo "3. MTR Test"
-echo "4. Display Network Packets"
-echo "5. Exit"
+echo "4. Exit"
 
 read -r option
 
@@ -61,9 +56,6 @@ case "$option" in
         mtr_test "$target_ip"
         ;;
     4)
-        display_packets
-        ;;
-    5)
         echo "Exiting..."
         exit 0
         ;;
