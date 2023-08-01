@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# ASCII art for Netrunners
+echo "
+███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗████████╗
+████╗ ████║██╔═══██╗██╔══██╗██║   ██║╚══██╔══╝
+██╔████╔██║██║   ██║██║  ██║██║   ██║   ██║   
+██║╚██╔╝██║██║   ██║██║  ██║██║   ██║   ██║   
+██║ ╚═╝ ██║╚██████╔╝██████╔╝╚██████╔╝   ██║   
+╚═╝     ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝    ╚═╝   
+"
+
+# Function to scan ports
+scan_ports() {
+    target_ip="$1"
+    echo "Scanning ports for IP: $target_ip"
+    # Your port scanning logic here (using nmap, for example)
+}
+
+# Function to ping 8.8.8.8
+ping_google() {
+    echo "Pinging 8.8.8.8"
+    ping -c 4 8.8.8.8
+}
+
+# Function for MTR test
+mtr_test() {
+    target_ip="$1"
+    echo "Running MTR test to IP: $target_ip"
+    # Your MTR test logic here (using mtr, for example)
+}
+
+# Function to display network packets using tshark
+display_packets() {
+    echo "Displaying network packets using tshark"
+    # Your tshark command here
+}
+
+# Main menu
+echo "Please select an option:"
+echo "1. Scan Ports"
+echo "2. Ping 8.8.8.8"
+echo "3. MTR Test"
+echo "4. Display Network Packets"
+echo "5. Exit"
+
+read -r option
+
+case "$option" in
+    1)
+        echo "Enter the IP address to scan ports:"
+        read -r target_ip
+        scan_ports "$target_ip"
+        ;;
+    2)
+        ping_google
+        ;;
+    3)
+        echo "Enter the IP address for MTR test:"
+        read -r target_ip
+        mtr_test "$target_ip"
+        ;;
+    4)
+        display_packets
+        ;;
+    5)
+        echo "Exiting..."
+        exit 0
+        ;;
+    *)
+        echo "Invalid option. Please select a valid option."
+        ;;
+esac
