@@ -30,7 +30,7 @@ run_mtr_test() {
 ping_8_8_8_8
 run_mtr_test
 
-# Display the main menu loop
+# Display the main menu
 while true; do
     echo -e "\nPlease select an option:
 1. Scan Ports
@@ -40,7 +40,7 @@ while true; do
 
     case "$choice" in
         1) scan_ports ;;
-        2) exit ;;
+        2) break ;;
         *) echo "Invalid option. Please select a valid option." ;;
     esac
 done
