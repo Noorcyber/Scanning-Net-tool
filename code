@@ -9,7 +9,7 @@ animate_matrix_style() {
     while [ $i -lt $len ]; do
         printf "\e[32m${text:$i:1}\e[0m"
         sleep 0.1
-        ((i++))
+        i=$((i+1))
     done
     echo ""
 }
@@ -61,3 +61,14 @@ while true; do
         *) echo "Invalid option. Please select a valid option." ;;
     esac
 done
+Save the changes and run the script again:
+
+bash
+Copy code
+./netrunners_tool.sh
+Now, the script should run without any errors, and you should see "Netrunners" displayed in the Matrix movie style at the beginning. You can use the menu options to scan ports, ping 8.8.8.8, run an MTR test, or exit the tool.
+
+
+
+
+
