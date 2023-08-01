@@ -27,6 +27,7 @@ run_mtr_test() {
 
 # Main menu loop
 while true; do
+    clear  # Clear the screen before displaying the main menu
     echo -e "\nPlease select an option:
 1. Scan Ports
 2. Ping 8.8.8.8
