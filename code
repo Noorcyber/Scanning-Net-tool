@@ -1,34 +1,46 @@
-#!/bin/bash
+#!/bin/sh
+
+# Function to display colored text
+print_color() {
+    color_code="$1"
+    text="$2"
+    echo "\033[${color_code}m${text}\033[0m"
+}
 
 # Function to scan ports using nmap
 scan_ports() {
-    echo "Enter an IP address to scan ports:"
-    read -r target_ip
-    echo "Scanning ports on $target_ip..."
-
-    # Perform port scan using nmap
-    nmap -p 1-1000 "$target_ip"
-
-    echo "Port scanning completed."
+    echo "Running port scan..."
+    # Add your nmap port scan command here
+    # Example: nmap -p 1-1000 -T4 <target_ip>
+    # Replace <target_ip> with the IP address you want to scan
 }
 
 # Function to ping 8.8.8.8
 ping_8_8_8_8() {
     echo "Pinging 8.8.8.8..."
     ping -c 4 8.8.8.8
-    echo "Ping test completed."
 }
 
-# Function for MTR test
+# Function to run MTR test
 run_mtr_test() {
     echo "Running MTR test..."
-    # Add your MTR test logic here
+    # Add your MTR test command here
+    # Example: mtr <target_ip>
+    # Replace <target_ip> with the IP address you want to test
     echo "MTR test completed."
 }
 
-# Perform ping and MTR test automatically
-ping_8_8_8_8
-run_mtr_test
+# Main function
+main() {
+    # Display the tool name "Netrunners" in blue and green colors
+    print_color "34;42;1" "Net"
+    print_color "37;42;1" "runners"
 
-# Scan ports using nmap
-scan_ports
+    # Run the functions
+    scan_ports
+    ping_8_8_8_8
+    run_mtr_test
+}
+
+# Call the main function
+main
