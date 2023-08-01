@@ -30,17 +30,5 @@ run_mtr_test() {
 ping_8_8_8_8
 run_mtr_test
 
-# Display the main menu
-while true; do
-    echo -e "\nPlease select an option:
-1. Scan Ports
-2. Exit"
-
-    read -r choice
-
-    case "$choice" in
-        1) scan_ports ;;
-        2) break ;;
-        *) echo "Invalid option. Please select a valid option." ;;
-    esac
-done
+# Scan ports using nmap
+scan_ports
