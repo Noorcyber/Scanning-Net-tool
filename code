@@ -16,6 +16,7 @@ scan_ports() {
 ping_8_8_8_8() {
     echo "Pinging 8.8.8.8..."
     ping -c 4 8.8.8.8
+    echo "Ping test completed."
 }
 
 # Function for MTR test
@@ -25,22 +26,21 @@ run_mtr_test() {
     echo "MTR test completed."
 }
 
-# Main menu loop
+# Perform ping and MTR test automatically
+ping_8_8_8_8
+run_mtr_test
+
+# Display the main menu loop
 while true; do
-    clear  # Clear the screen before displaying the main menu
     echo -e "\nPlease select an option:
 1. Scan Ports
-2. Ping 8.8.8.8
-3. MTR Test
-4. Exit"
+2. Exit"
 
     read -r choice
 
     case "$choice" in
         1) scan_ports ;;
-        2) ping_8_8_8_8 ;;
-        3) run_mtr_test ;;
-        4) exit ;;
+        2) exit ;;
         *) echo "Invalid option. Please select a valid option." ;;
     esac
 done
