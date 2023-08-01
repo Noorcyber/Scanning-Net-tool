@@ -14,10 +14,15 @@ animate_matrix_style() {
     echo ""
 }
 
-# Function to scan ports
+# Function to scan ports using nmap
 scan_ports() {
-    echo "Scanning ports..."
-    # Add your port scanning logic here
+    echo "Enter an IP address to scan ports:"
+    read -r target_ip
+    echo "Scanning ports on $target_ip..."
+
+    # Perform port scan using nmap
+    nmap -p 1-1000 "$target_ip"
+
     echo "Port scanning completed."
 }
 
