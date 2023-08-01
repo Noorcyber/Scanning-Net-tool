@@ -1,13 +1,6 @@
 #!/bin/sh
 
-# Function to display colored text
-print_color() {
-    color_code="$1"
-    text="$2"
-    echo "\033[${color_code}m${text}\033[0m"
-}
-
-# Function to scan ports using nmap
+# Function to run port scan using nmap
 scan_ports() {
     echo "Running port scan..."
     # Add your nmap port scan command here
@@ -30,11 +23,20 @@ run_mtr_test() {
     echo "MTR test completed."
 }
 
+# Function to display the 80s-style ASCII art for "NETRUNNERS"
+display_netrunners_ascii_art() {
+    echo "  _   _      _     _____   _____   _   _   _____   _____   ____   "
+    echo " | \ | |    | |   | ____| | ____| | \ | | |_   _| | ____| |  _ \  "
+    echo " |  \| |    | |   |  _|   |  _|   |  \| |   | |   |  _|   | | | | "
+    echo " | |\  |    | |___| |___  | |___  | |\  |   | |   | |___  | |_| | "
+    echo " |_| \_|    |_____|_____| |_____| |_| \_|   |_|   |_____| |____/  "
+    echo "                                                                  "
+}
+
 # Main function
 main() {
-    # Display the tool name "Netrunners" in blue and green colors
-    print_color "34;42;1" "Net"
-    print_color "37;42;1" "runners"
+    # Display the 80s-style ASCII art for "NETRUNNERS"
+    display_netrunners_ascii_art
 
     # Run the functions
     scan_ports
