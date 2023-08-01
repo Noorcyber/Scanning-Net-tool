@@ -1,16 +1,14 @@
 #!/bin/bash
 
-# ASCII art for Netrunners (Linux style)
-echo -e "\e[1;34m
-   __   __  _______  __   __  _______ 
-  |  | |  ||       ||  | |  ||       |
-  |  |_|  ||   _   ||  |_|  ||    ___|
-  |       ||  | |  ||       ||   |___ 
-  |_     _||  |_|  ||       ||    ___|
-    |   |  |       | |     | |   |___ 
-    |___|  |_______|  |___|  |_______|
-
-\e[0m"
+# Function to animate the text in Matrix movie style
+animate_matrix_style() {
+    text="Netrunners"
+    for (( i=0; i<${#text}; i++ )); do
+        echo -ne "${text:$i:1}"
+        sleep 0.1
+    done
+    echo ""
+}
 
 # Function to scan ports
 scan_ports() {
@@ -34,6 +32,10 @@ run_mtr_test() {
 
 # Main menu loop
 while true; do
+    # Clear the screen to create the Matrix-style animation effect
+    clear
+    animate_matrix_style
+
     echo -e "\nPlease select an option:
 1. Scan Ports
 2. Ping 8.8.8.8
