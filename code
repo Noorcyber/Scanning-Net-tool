@@ -1,21 +1,50 @@
-#!/bin/sh
+#!/bin/bash
 
-ping_host() {
-    if [ "$(uname)" = "Darwin" ]; then
-        ping -c 4 "$1"
-    else
-        ping -n 4 "$1"
-    fi
+# Function to run port scan using nmap
+scan_ports() {
+    echo "Running port scan..."
+    # Add your nmap port scan command here
+    # Example: nmap -p 1-1000 -T4 <target_ip>
+    # Replace <target_ip> with the IP address you want to scan
 }
 
-# Example usage
-echo "Running port scan..."
-nmap -F "$1"
-echo "Port scan completed."
+# Function to ping 8.8.8.8
+ping_8_8_8_8() {
+    echo "Pinging 8.8.8.8..."
+    ping -c 4 8.8.8.8
+}
 
-ping_host "8.8.8.8"
+# Function to run MTR test
+run_mtr_test() {
+    echo "Running MTR test..."
+    # Add your MTR test command here
+    # Example: mtr <target_ip>
+    # Replace <target_ip> with the IP address you want to test
+    echo "MTR test completed."
+}
 
-# MTR test at the end
-echo "Running MTR test..."
-mtr -c 5 "8.8.8.8"
-echo "MTR test completed."
+# Function to display the design "Datto Netrunners"
+display_datto_netrunners() {
+    cat << "EOF"
+  _____  ____   _____   _   _   ____   _   _   ____    _   _   _____   
+ | ____|/ ___| | ____| | \ | | |  _ \ | | | | |  _ \  | | | | |_   _|  
+ |  _|  \___ \ |  _|   |  \| | | | | || | | | | | | | | | | |   | |    
+ | |___  ___) || |___  | |\  | | |_| || |_| | | |_| | | |_| |   | |    
+ |_____||____/ |_____| |_| \_| |____/  \___/  |____/   \___/    |_|    
+                                                                      
+EOF
+}
+
+# Main function
+main() {
+    # Display the design "Datto Netrunners"
+    display_datto_netrunners
+
+    # Run the functions
+    scan_ports
+    ping_8_8_8_8
+    run_mtr_test
+}
+
+# Call the main function
+main
