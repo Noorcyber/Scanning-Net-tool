@@ -23,6 +23,24 @@ run_mtr_test() {
     echo "MTR test completed."
 }
 
+# Function to run netstat
+run_netstat() {
+    echo "Running netstat..."
+    netstat -tuln
+}
+
+# Function to run traceroute to google.com
+run_traceroute_google() {
+    echo "Running traceroute to google.com..."
+    traceroute google.com
+}
+
+# Function to run nslookup for google.com
+run_nslookup_google() {
+    echo "Running nslookup for google.com..."
+    nslookup google.com
+}
+
 # Function to display the design "Datto Netrunners"
 display_datto_netrunners() {
     cat << "EOF"
@@ -35,7 +53,9 @@ display_datto_netrunners() {
 ░ ▒░   ▒ ▒ ░░ ▒░ ░ ▒ ░░   ░ ▒▓ ░▒▓░░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒ ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
 ░ ░░   ░ ▒░ ░ ░  ░   ░      ░▒ ░ ▒░░░▒░ ░ ░ ░ ░░   ░ ▒░░ ░░   ░ ▒░ ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
    ░   ░ ░    ░    ░        ░░   ░  ░░░ ░ ░    ░   ░ ░    ░   ░ ░    ░     ░░   ░ ░  ░  ░  
-         ░    ░  ░           ░        ░              ░          ░    ░  ░   ░           ░    
+         ░    ░  ░           ░        ░              ░          ░    ░  ░   ░           ░  
+                                                                                           
+ 
                                                                       
 EOF
 }
@@ -49,6 +69,9 @@ main() {
     scan_ports
     ping_8_8_8_8
     run_mtr_test
+    run_netstat
+    run_traceroute_google
+    run_nslookup_google
 }
 
 # Call the main function
