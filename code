@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Function to run port scan using nmap
-scan_ports() {
-    echo "Running port scan..."
-    # Add your nmap port scan command here
-    # Example: nmap -p 1-1000 -T4 <target_ip>
-    # Replace <target_ip> with the IP address you want to scan
-}
-
 # Function to ping 8.8.8.8
 ping_8_8_8_8() {
     echo "Pinging 8.8.8.8..."
@@ -17,9 +9,7 @@ ping_8_8_8_8() {
 # Function to run MTR test
 run_mtr_test() {
     echo "Running MTR test..."
-    # Add your MTR test command here
-    # Example: mtr <target_ip>
-    # Replace <target_ip> with the IP address you want to test
+    mtr
     echo "MTR test completed."
 }
 
@@ -41,10 +31,21 @@ run_nslookup_google() {
     nslookup google.com
 }
 
+# Function to check LTE errors from logs
+check_lte_errors() {
+    echo "Checking LTE errors..."
+    logread | grep lte
+}
+
+# Function to display the router modem status
+display_modem_status() {
+    echo "Displaying router modem status..."
+    modemstatus
+}
+
 # Function to display the design "Datto Netrunners"
 display_datto_netrunners() {
     cat << "EOF"
-
  ███▄    █ ▓█████▄▄▄█████▓ ██▀███   █    ██  ███▄    █  ███▄    █ ▓█████  ██▀███    ██████ 
  ██ ▀█   █ ▓█   ▀▓  ██▒ ▓▒▓██ ▒ ██▒ ██  ▓██▒ ██ ▀█   █  ██ ▀█   █ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
 ▓██  ▀█ ██▒▒███  ▒ ▓██░ ▒░▓██ ░▄█ ▒▓██  ▒██░▓██  ▀█ ██▒▓██  ▀█ ██▒▒███   ▓██ ░▄█ ▒░ ▓██▄   
@@ -54,9 +55,7 @@ display_datto_netrunners() {
 ░ ░░   ░ ▒░ ░ ░  ░   ░      ░▒ ░ ▒░░░▒░ ░ ░ ░ ░░   ░ ▒░░ ░░   ░ ▒░ ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
    ░   ░ ░    ░    ░        ░░   ░  ░░░ ░ ░    ░   ░ ░    ░   ░ ░    ░     ░░   ░ ░  ░  ░  
          ░    ░  ░           ░        ░              ░          ░    ░  ░   ░           ░  
-     By Noor Shaheed, Datto, Kaseya. 07/20/2023      Netrunners TS tool V.01                                                                                
- 
-                                                                      
+  By Noor Shaheed, Datto, Kaseya. 07/20/2023      Netrunners TS tool V.02
 EOF
 }
 
@@ -66,12 +65,13 @@ main() {
     display_datto_netrunners
 
     # Run the functions
-    scan_ports
     ping_8_8_8_8
     run_mtr_test
     run_netstat
     run_traceroute_google
     run_nslookup_google
+    check_lte_errors
+    display_modem_status
 }
 
 # Call the main function
