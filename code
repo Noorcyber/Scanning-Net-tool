@@ -9,14 +9,8 @@ ping_8_8_8_8() {
 # Function to run MTR test
 run_mtr_test() {
     echo "Running MTR test..."
-    mtr
+    mtr 8.8.8.8
     echo "MTR test completed."
-}
-
-# Function to run netstat
-run_netstat() {
-    echo "Running netstat..."
-    netstat -tuln
 }
 
 # Function to run traceroute to google.com
@@ -40,7 +34,7 @@ check_lte_errors() {
 # Function to display the router modem status
 display_modem_status() {
     echo "Displaying router modem status..."
-    modemstatus
+    modemstatus --verbose
 }
 
 # Function to display the design "Datto Netrunners"
@@ -67,7 +61,6 @@ main() {
     # Run the functions
     ping_8_8_8_8
     run_mtr_test
-    run_netstat
     run_traceroute_google
     run_nslookup_google
     check_lte_errors
